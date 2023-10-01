@@ -8,6 +8,7 @@ import {
 } from "react-router-dom";
 import App from './App';
 import Menu, { menuLoader } from './routes/Menu';
+import CartProvider from './context/CartContext';
 
 const root = ReactDOM.createRoot(
   document.getElementById('root') as HTMLElement
@@ -29,6 +30,8 @@ const router = createBrowserRouter([
 
 root.render(
   <React.StrictMode>
-    <RouterProvider router={router} />
+    <CartProvider>
+      <RouterProvider router={router} />
+    </CartProvider>
   </React.StrictMode>
 );
