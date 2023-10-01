@@ -1,14 +1,36 @@
 .header-cont{
+   width: 100%; 
+    position: fixed;
+    top: 0;
     height: 50px;
-    width: 100vw;
     display: flex;
     justify-content: space-between;
     align-items: center;
     background-color: rgb(150, 238, 16);
 }
 
+.company-name-cont{
+    margin: 0px 10px;
+}
+
 .company-name{
     color: whitesmoke;
     font-size: larger;
     font-weight: 500;
+}
+
+.header-link{
+    height: 42px;
+    width: 42px;
+    border-radius: 50px;
+    background-color: white;
+    margin: 0px 10px;
+    display: inline-block;
+    >i{
+        font-size: 22px;
+        margin: 0;
+        line-height: 20px;
+        margin: 10px 0px;
+        color: rgb(150, 238, 16);
+    }
 }

@@ -9,15 +9,18 @@ const Header = () => {
                     <p className="company-name">Fresh Cuts</p>
                 </a>
             </div>
-            <div className="search-box-cont">
+            {/* <div className="search-box-cont">
                 <div className="search-box-wrap">
                     <input type="text" placeholder="Search" className="search-input" />
                     <button className="close-search-btn"></button>
                     <button className="search-enter-btn"></button>
                 </div>
-            </div>
+            </div> */}
             <div className="links-cont">
-                <Link to={`cart`}>Cart</Link>
+                <Link className="no-default-style" to={`account`}>
+                    <div className="header-link"><i className="fa-solid fa-user"></i></div></Link>
+                <Link className="no-default-style" to={`cart`}>
+                    <div className="header-link"><i className="fa-solid fa-cart-shopping"></i></div></Link>
             </div>
         </div>
     )
