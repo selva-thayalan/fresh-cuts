@@ -4,12 +4,17 @@ import { Quantity } from "../models/Quantity";
 import ProductCard from "../components/ProductCard";
 import "../styles/routes/Menu.css";
 import { Pieces } from "../models/Pieces";
+import { useCart } from "../context/CartContext";
 
 const Menu = () => {
     const data = useLoaderData() as ProductCardModel[];
+    const { addToCart } = useCart();
     return (
         <div className="product-menu-cont">
-            {data?.map(p => <ProductCard key={p.name} {...p} />)}
+            {data?.map(p => <ProductCard 
+                                key={p.name} 
+                                onAddToCart={addToCart}
+                                model={p} />)}
         </div>
     )
 }

@@ -1,7 +1,10 @@
 import { Link } from "react-router-dom";
 import "../styles/components/Header.css";
+import { useCart } from "../context/CartContext";
 
 const Header = () => {
+    const { items } = useCart();
+
     return(
         <div className="header-cont">
             <div className="company-name-cont">
@@ -20,7 +23,7 @@ const Header = () => {
                 <Link className="no-default-style" to={`account`}>
                     <div className="header-link"><i className="fa-solid fa-user"></i></div></Link>
                 <Link className="no-default-style" to={`cart`}>
-                    <div className="header-link"><i className="fa-solid fa-cart-shopping"></i></div></Link>
+                    <div className="header-link"><i className="fa-solid fa-cart-shopping"></i>{items.length}</div></Link>
             </div>
         </div>
     )

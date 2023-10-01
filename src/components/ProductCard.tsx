@@ -1,3 +1,4 @@
+import CartItem from "../models/CartItem";
 import { Pieces, PiecesValues } from "../models/Pieces";
 import ProductCardModel from "../models/ProductCard";
 import { Quantity, QuantityValues } from "../models/Quantity";
@@ -6,13 +7,23 @@ import "../styles/components/ProductCard.css";
 import StateSwitch from "./common/StateSwitch";
 import { useState } from 'react';
 
-interface ProductCardProps extends ProductCardModel{
-
+interface ProductCardProps{
+    model: ProductCardModel,
+    onAddToCart: (item: CartItem) => void
 }
 
-const ProductCard = ({ name, imageUrl, description, availbaleQuantities, availablePieces, price, pricePerQuantity, isOutOfStock }: ProductCardProps) => {
+const ProductCard = ({ model, onAddToCart }: ProductCardProps) => {
+    const { name, imageUrl, description, availbaleQuantities, availablePieces, price, pricePerQuantity, isOutOfStock } = model;
+
     const [ quantity, setQuantity ] = useState<Quantity>();
-    const [ pieces, setPieces ] = useState<Pieces>();
+    const [ piece, setPiece ] = useState<Pieces>();
+
+    const addToCart = () => {
+        if(quantity !== undefined && piece !== undefined){
+            let item = {name, price, quantity, piece, count: 1}
+            onAddToCart(item);
+        }
+    }
 
     return(
         <div className="product-card-cont">
@@ -40,13 +51,13 @@ const ProductCard = ({ name, imageUrl, description, availbaleQuantities, availab
                             <label>Pieces</label>
                             <StateSwitch 
                                 style={StateStyle.tab}
-                                value={pieces}
+                                value={piece}
                                 options={availablePieces.map(p => ({value: p, label: PiecesValues[p]}))}
-                                onChange={(value) => setPieces(value)}/>
+                                onChange={(value) => setPiece(value)}/>
                         </div>}
                     {isOutOfStock ?
                         <div className="out-of-stock-info">Out Of Stock<i className="fa-solid fa-exclamation"></i></div>:
-                        <button className="add-to-cart-btn">Add <i className="fa-solid fa-cart-shopping"></i></button>}
+                        <button className="add-to-cart-btn" onClick={addToCart}>Add <i className="fa-solid fa-cart-shopping"></i></button>}
                 </div>
             </div>
         </div>
