@@ -1,0 +1,14 @@
+.header-cont{
+    height: 50px;
+    width: 100vw;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: rgb(150, 238, 16);
+}
+
+.company-name{
+    color: whitesmoke;
+    font-size: larger;
+    font-weight: 500;
+}

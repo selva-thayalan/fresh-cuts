@@ -1,0 +1,5 @@
+a.no-default-style{
+    &:link , &:visited, &:hover, &:active  {
+        text-decoration: none;
+    }
+}
