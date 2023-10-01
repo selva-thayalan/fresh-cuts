@@ -1,0 +1,52 @@
+.state-switch-cont{
+    display: flex;
+    justify-content: space-around;
+}
+
+.state-item-cont{
+    flex: 1;
+    text-align: center;
+    height: 25px;
+    border: 1px solid rgb(150, 238, 16);
+    background-color: white;
+    font-size: x-small;
+    min-width: 30px;
+    font-size: small;
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    &.active-state{
+        transition: all 0.2s;
+        background-color: rgb(150, 238, 16) !important;
+        color: whitesmoke;
+        cursor: default;
+    }
+    &:hover{
+        transition: all 0.3s;
+        background-color: rgba(149, 249, 0, 0.3)
+    }
+    &:first-child{
+        border-bottom-left-radius: 5px;
+        border-top-left-radius: 5px;
+    }
+    &:last-child{
+        border-bottom-right-radius: 5px;
+        border-top-right-radius: 5px;
+    }
+}
+
+.state-item-cont.active-state{
+    background-color: inherit;
+}
+
+.state-switch-title{
+    font-size: x-small;
+    line-height: 8px;
+    font-weight: 500;
+    margin:  4px 0;
+}
+
+.font-tiny{
+    font-size: 8px;
+}
