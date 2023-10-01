@@ -6,6 +6,7 @@ import {
   RouterProvider,
 } from "react-router-dom";
 import App from './App';
+import Menu, { menuLoader } from './routes/Menu';
 
 const root = ReactDOM.createRoot(
   document.getElementById('root') as HTMLElement
@@ -18,7 +19,8 @@ const router = createBrowserRouter([
     children:[
       {
         path: "/",
-        element:<p>Hello World!</p>
+        element: <Menu />,
+        loader: menuLoader,
       }
     ]
   },
