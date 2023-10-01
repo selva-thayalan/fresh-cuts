@@ -1,3 +1,4 @@
+import { Pieces } from "./Pieces"
 import { Quantity } from "./Quantity"
 
 interface ProductCardModel {
@@ -7,7 +8,7 @@ interface ProductCardModel {
     isOutOfStock: boolean,
     price: number,
     pricePerQuantity: Quantity,
-    availablePieces?: [],
+    availablePieces?: Pieces[],
     availbaleQuantities: Quantity[]
 }
 
