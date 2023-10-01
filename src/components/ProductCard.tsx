@@ -1,12 +1,18 @@
+import { Pieces, PiecesValues } from "../models/Pieces";
 import ProductCardModel from "../models/ProductCard";
-import { QuantityValues } from "../models/Quantity";
+import { Quantity, QuantityValues } from "../models/Quantity";
+import { StateStyle } from "../models/StateSwitchComponent";
 import "../styles/components/ProductCard.css";
+import StateSwitch from "./common/StateSwitch";
+import { useState } from 'react';
 
 interface ProductCardProps extends ProductCardModel{
 
 }
 
-const ProductCard = ({ name, imageUrl, description, availbaleQuantities, price, pricePerQuantity, isOutOfStock }: ProductCardProps) => {
+const ProductCard = ({ name, imageUrl, description, availbaleQuantities, availablePieces, price, pricePerQuantity, isOutOfStock }: ProductCardProps) => {
+    const [ quantity, setQuantity ] = useState<Quantity>();
+    const [ pieces, setPieces ] = useState<Pieces>();
 
     return(
         <div className="product-card-cont">
@@ -14,16 +20,33 @@ const ProductCard = ({ name, imageUrl, description, availbaleQuantities, price, 
             <div className="product-wrap">
                 <div className="product-details-cont">
                     <p className="product-name">{name}</p>
-                    <p className="product-price"><span className="mrp-price">&#8377;{price}</span><span> per </span>{QuantityValues[pricePerQuantity]}</p>
+                    <p className="product-price"><span className="mrp-price">&#8377;{price}</span><span> Per </span>{QuantityValues[pricePerQuantity]}</p>
                 </div>
                 <div className="product-order-details-cont">
                     {availbaleQuantities && 
                         <div className="quantities-cont">
                             <label>Quantity</label>
+                            <StateSwitch 
+                                style={StateStyle.tab}
+                                value={quantity}
+                                options={availbaleQuantities.map(q => {
+                                    let temp = QuantityValues[q].split(" ");
+                                    return {value: q, label: `<p class="state-switch-title">${temp[0]} <br><span class="font-tiny">${temp[1]}</span></p>`}
+                                })}
+                                onChange={(value) => setQuantity(value)}/>
+                        </div>}
+                    {availablePieces && 
+                        <div className="quantities-cont">
+                            <label>Pieces</label>
+                            <StateSwitch 
+                                style={StateStyle.tab}
+                                value={pieces}
+                                options={availablePieces.map(p => ({value: p, label: PiecesValues[p]}))}
+                                onChange={(value) => setPieces(value)}/>
                         </div>}
                     {isOutOfStock ?
-                        <div className="out-of-stock-info">Out Of Stock</div>:
-                        <button className="add-to-cart-btn">Add to cart</button>}
+                        <div className="out-of-stock-info">Out Of Stock<i className="fa-solid fa-exclamation"></i></div>:
+                        <button className="add-to-cart-btn">Add <i className="fa-solid fa-cart-shopping"></i></button>}
                 </div>
             </div>
         </div>

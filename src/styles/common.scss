@@ -3,3 +3,9 @@ a.no-default-style{
         text-decoration: none;
     }
 }
+
+button, a{
+    &:hover{
+        cursor: pointer;
+    }
+}

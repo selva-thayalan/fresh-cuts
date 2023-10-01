@@ -21,6 +21,13 @@
     margin-left: 5px;
 }
 
+.quantities-cont{
+    display: flex;
+    width: 100%;
+    flex-direction: row;
+    justify-content: space-evenly;
+}
+
 .product-name{
     margin: 0;
     font-size: 22px;
@@ -30,6 +37,7 @@
 .product-price{
     margin: 0;
     font-size: small;
+    margin-left: 10px;
 }
 
 .mrp-price{
@@ -44,8 +52,19 @@
     align-items: flex-end;
     justify-content: flex-end;
     flex-direction: column;
+    justify-content: space-evenly;
 }
 
 .out-of-stock-info{
     color: black;
+}
+
+.add-to-cart-btn{
+    background-color: rgb(150, 238, 16);
+    color: white;
+    outline: none;
+    border: 0px;
+    padding: 4px 13px;
+    font-size: 14px;
+    border-radius: 5px;
 }
