@@ -19,7 +19,7 @@ interface ProductCardProps{
 }
 
 const ProductCard = ({ model, cartItems, onAddToCart }: ProductCardProps) => {
-    const { name, imageUrl, description, availbaleQuantities, availablePieces, price, pricePerQuantity, isOutOfStock } = model;
+    const { name, imageUrl, availbaleQuantities, availablePieces, price, pricePerQuantity, isOutOfStock } = model;
 
     const [ quantity, setQuantity ] = useState<Quantity>();
     const [ piece, setPiece ] = useState<Pieces>();
