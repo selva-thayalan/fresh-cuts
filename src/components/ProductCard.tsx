@@ -4,15 +4,21 @@ import ProductCardModel from "../models/ProductCard";
 import { Quantity, QuantityValues } from "../models/Quantity";
 import { StateStyle } from "../models/StateSwitchComponent";
 import "../styles/components/ProductCard.css";
+import { GetQuantityElement } from "../util/Quantity";
+import CountIndicator from "./common/CountIndicator";
 import StateSwitch from "./common/StateSwitch";
 import { useState } from 'react';
 
+interface CartItemProp extends CartItem{
+    index: number
+}
 interface ProductCardProps{
     model: ProductCardModel,
+    cartItems: CartItemProp[],
     onAddToCart: (item: CartItem) => void
 }
 
-const ProductCard = ({ model, onAddToCart }: ProductCardProps) => {
+const ProductCard = ({ model, cartItems, onAddToCart }: ProductCardProps) => {
     const { name, imageUrl, description, availbaleQuantities, availablePieces, price, pricePerQuantity, isOutOfStock } = model;
 
     const [ quantity, setQuantity ] = useState<Quantity>();
@@ -40,10 +46,7 @@ const ProductCard = ({ model, onAddToCart }: ProductCardProps) => {
                             <StateSwitch 
                                 style={StateStyle.tab}
                                 value={quantity}
-                                options={availbaleQuantities.map(q => {
-                                    let temp = QuantityValues[q].split(" ");
-                                    return {value: q, label: `<p class="state-switch-title">${temp[0]} <br><span class="font-tiny">${temp[1]}</span></p>`}
-                                })}
+                                options={availbaleQuantities.map(q => ({value: q, label: GetQuantityElement(q)}))}
                                 onChange={(value) => setQuantity(value)}/>
                         </div>}
                     {availablePieces && 
@@ -55,13 +58,22 @@ const ProductCard = ({ model, onAddToCart }: ProductCardProps) => {
                                 options={availablePieces.map(p => ({value: p, label: PiecesValues[p]}))}
                                 onChange={(value) => setPiece(value)}/>
                         </div>}
-                    {isOutOfStock ?
-                        <div className="out-of-stock-info">Out Of Stock<i className="fa-solid fa-exclamation"></i></div>:
-                        <button className="add-to-cart-btn" onClick={addToCart}>Add <i className="fa-solid fa-cart-shopping"></i></button>}
+                        <div className="cart-actions-cont">
+                            <div className="cart-items-overview">
+                                {cartItems.map(c => <div className="item-summary">
+                                    <CountIndicator count={c.count} />
+                                    <div className="selected-quantity-cont" dangerouslySetInnerHTML={{__html: GetQuantityElement(c.quantity)}}></div>
+                                    <div className="selected-pieces-cont"><p className="state-switch-title">{PiecesValues[c.piece]}<br/><span className="font-tiny">Pieces</span></p></div>
+                                </div> )}
+                            </div>
+                        {isOutOfStock ?
+                            <div className="out-of-stock-info">Out Of Stock<i className="fa-solid fa-exclamation"></i></div>:
+                            <button className="add-to-cart-btn" onClick={addToCart}>Add <i className="fa-solid fa-cart-shopping"></i></button>}
+                        </div>
                 </div>
             </div>
         </div>
     )
 }
 
-export default ProductCard;
+export { ProductCard as default, type CartItemProp};

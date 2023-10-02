@@ -5,16 +5,25 @@ import ProductCard from "../components/ProductCard";
 import "../styles/routes/Menu.css";
 import { Pieces } from "../models/Pieces";
 import { useCart } from "../context/CartContext";
+import { CartItemProp } from "../components/ProductCard";
 
 const Menu = () => {
     const data = useLoaderData() as ProductCardModel[];
-    const { addToCart } = useCart();
+    const { items, addToCart } = useCart();
     return (
         <div className="product-menu-cont">
-            {data?.map(p => <ProductCard 
-                                key={p.name} 
-                                onAddToCart={addToCart}
-                                model={p} />)}
+            {data?.map(p => {
+                let cartItems: CartItemProp[] = [];
+                items.forEach((item, index) => {
+                    if(item.name === p.name)
+                        cartItems.push({...item, index});
+                });
+                return <ProductCard 
+                    key={p.name} 
+                    cartItems={cartItems}
+                    onAddToCart={addToCart}
+                    model={p} />
+            })}
         </div>
     )
 }
