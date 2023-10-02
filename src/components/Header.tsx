@@ -1,6 +1,7 @@
 import { Link } from "react-router-dom";
-import "../styles/components/Header.css";
+import "../styles/components/Header.scss";
 import { useCart } from "../context/CartContext";
+import CountIndicator from "./common/CountIndicator";
 
 const Header = () => {
     const { items } = useCart();
@@ -23,7 +24,11 @@ const Header = () => {
                 <Link className="no-default-style" to={`account`}>
                     <div className="header-link"><i className="fa-solid fa-user"></i></div></Link>
                 <Link className="no-default-style" to={`cart`}>
-                    <div className="header-link"><i className="fa-solid fa-cart-shopping"></i>{items.length}</div></Link>
+                    <div className="header-link">
+                        <i className="fa-solid fa-cart-shopping">
+                            {items.length > 0 && <CountIndicator count={items.length} size="medium" /> }
+                        </i>
+                    </div></Link>
             </div>
         </div>
     )
