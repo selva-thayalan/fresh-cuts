@@ -1,0 +1,33 @@
+.count-indicator{
+    position: absolute;
+    margin: 0;
+    color: white;
+    font-weight: 600;
+    background-color: rgb(255, 230, 0);
+    border-radius: 10px;
+    text-align: center;
+    >p{
+        margin: 0;
+    }
+
+    &.small{
+        top: -6px;
+        right: -6px;
+        height: 15px;
+        width: 15px;
+        font-size: 13px;
+        >p{
+            line-height: 14px;
+        }
+    }
+    &.medium{
+        top: 3px;
+        right: 6px;
+        height: 18px;
+        width: 18px;
+        font-size: 13px;
+        >p{
+            line-height: 18px;
+        }
+    }
+}
