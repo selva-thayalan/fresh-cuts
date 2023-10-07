@@ -13,7 +13,14 @@ const CartProvider = ({children}: {children: any}) => {
     const [items, setCart] = useState<CartItem[]>([]);
 
     function addToCart(item: CartItem) {
-        setCart([...items, item]);
+        let index = items.findIndex(i => (i.name === item.name && i.piece === item.piece && i.quantity === item.quantity));
+        if(index !== -1){
+            items[index].count++;
+            setCart([...items])
+        }
+        else{
+            setCart([...items, item]);
+        }
     }
 
     function removeItem(index: number){
