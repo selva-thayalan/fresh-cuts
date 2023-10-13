@@ -24,7 +24,13 @@ const CartProvider = ({children}: {children: any}) => {
     }
 
     function removeItem(index: number){
-        setCart(items.splice(index, 1));
+        if(items[index].count > 1){
+            items[index].count--;
+        }
+        else{
+            items.splice(index, 1);
+        }
+        setCart(JSON.parse(JSON.stringify(items)));
     }
 
     return (
