@@ -9,6 +9,7 @@ import {
 import App from './App';
 import Menu, { menuLoader } from './routes/Menu';
 import CartProvider from './context/CartContext';
+import Cart from './routes/Cart';
 
 const root = ReactDOM.createRoot(
   document.getElementById('root') as HTMLElement
@@ -23,6 +24,10 @@ const router = createBrowserRouter([
         path: "/",
         element: <Menu />,
         loader: menuLoader,
+      },
+      {
+        path:"/cart",
+        element: <Cart />
       }
     ]
   },

@@ -1,0 +1,88 @@
+.cart-item-card-cont{
+    width: 300px;
+    margin: 10px auto;
+    border: 1px solid gray;
+    border-radius: 10px;
+    display: flex;
+    justify-content: space-between;
+    padding: 10px;
+}
+
+.item-order-quantity-cont{
+    display: flex;
+}
+
+.cart-item-details-cont{
+    text-align: left;
+}
+
+.quantity-counter{
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    width: 75px;
+}
+
+.cart-item-img, .item-order-details{
+    display: inline-block;
+    vertical-align: middle;
+}
+
+.item-order-details-cont{
+    display: flex;
+    flex-direction: column;
+}
+
+.cart-item-name{
+    font-size: medium;
+    font-weight: 600;
+}
+
+.item-order-details{
+    display: flex;
+    flex-direction: column;
+}
+
+.item-order-count{
+    margin: 0;
+}
+
+.item-order-quantity-cont{
+    margin: 3px;
+}
+
+.item-order-detail-box{
+    border: 1px solid rgb(112, 112, 112);
+    color: rgb(112, 112, 112);
+    display: inline-block;
+    vertical-align: middle;
+    border-radius: 3px;
+    padding: 2px 5px;
+    font-size: 12px;
+    margin: 5px;
+}
+
+.rupees-symbol-small{
+    font-size: small;
+}
+
+.item-order-price{
+    margin: 5px;
+    margin-left: auto;
+    font-size: medium;
+    font-weight: 500;
+}
+
+.item-summary-cont.horizontal{
+    .selected-quantity-cont, .selected-pieces-cont{
+        display: inline-block;
+    }
+    .selected-quantity-cont{
+        border-top-right-radius: 0px;
+        border-bottom-left-radius: 5px;
+    }
+    .selected-pieces-cont{
+        border-top-right-radius: 5px;
+        border-bottom-left-radius: 0px;
+    }
+}
