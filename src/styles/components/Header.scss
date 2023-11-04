@@ -1,13 +1,21 @@
 .header-cont{
     width: 100%; 
+    padding: 5px;
     z-index: 100;
     position: fixed;
     top: 0;
+    background-color: rgb(150, 238, 16);
+    box-shadow: 0px 5px 20px -10px rgba(0,0,0,0.75);
+}
+
+.header-wrab{
+    position: relative;
+    margin: auto;
     height: 50px;
     display: flex;
     justify-content: space-between;
     align-items: center;
-    background-color: rgb(150, 238, 16);
+    max-width: 1200px;
 }
 
 .company-name-cont{
@@ -16,7 +24,7 @@
 
 .company-name{
     color: whitesmoke;
-    font-size: larger;
+    font-size: x-large;
     font-weight: 500;
 }
 
@@ -26,6 +34,7 @@
     border-radius: 50px;
     background-color: white;
     margin: 0px 10px;
+    box-shadow: 1px 2px 15px -10px rgba(0, 0, 0, 0.75);
     display: inline-block;
     >i{
         font-size: 22px;

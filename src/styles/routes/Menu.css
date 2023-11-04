@@ -1,4 +1,7 @@
 .product-menu-cont{
-    max-width: 1100px;
+    width: 100%;
     margin: auto;
+    display: grid;
+    justify-content: center;
+    grid-template-columns: repeat(auto-fill, 320px) ;
 }
