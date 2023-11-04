@@ -68,7 +68,7 @@ const ProductCard = ({ model, cartItems, onAddToCart }: ProductCardProps) => {
                             </div>
                         {isOutOfStock ?
                             <div className="out-of-stock-info">Out Of Stock<i className="fa-solid fa-exclamation"></i></div>:
-                            <button className="add-to-cart-btn" onClick={addToCart}>Add <i className="fa-solid fa-cart-shopping"></i></button>}
+                            <button className="add-to-cart-btn brand-btn-style" onClick={addToCart}>Add <i className="fa-solid fa-cart-shopping"></i></button>}
                         </div>
                 </div>
             </div>

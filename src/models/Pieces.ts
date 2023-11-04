@@ -10,4 +10,10 @@ const PiecesValues = {
     [Pieces.Large]: "L"
 }
 
-export { Pieces, PiecesValues };
+const PiecesNames = {
+    [Pieces.Small] : "Small",
+    [Pieces.Medium]: "Medium",
+    [Pieces.Large]: "Large"
+}
+
+export { Pieces, PiecesValues, PiecesNames };
